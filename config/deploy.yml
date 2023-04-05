@@ -1,0 +1,33 @@
+service: my-app
+image: user/my-app
+
+servers:
+  web:
+    - 134.209.111.91
+
+# Credentials for your image host.
+registry:
+  username: tannakartikey
+  password:
+    - MRSK_REGISTRY_PASSWORD
+
+env:
+  clear:
+    DB_HOST: 134.209.111.91
+  secret:
+    - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
+
+accessories:
+  db:
+    image: postgres:15
+    host: 134.209.111.91
+    port: 5432
+    env:
+      clear:
+        POSTGRES_USER: 'rails_71_mrsk_deploy'
+        POSTGRES_DB: 'rails_71_mrsk_deploy_production'
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - data:/var/lib/postgresql/data

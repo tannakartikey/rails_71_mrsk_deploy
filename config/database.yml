@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
+  host: <%= ENV["DB_HOST"] %>
   database: rails_71_mrsk_deploy_production
   username: rails_71_mrsk_deploy
-  password: <%= ENV["RAILS_71_MRSK_DEPLOY_DATABASE_PASSWORD"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
